@@ -1,0 +1,32 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Secrets and credentials — NEVER commit these
+.env
+.env.*
+.env.local
+.env.production
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cer
+credentials.json
+service-account*.json
+*_rsa
+*_ecdsa
+*_ed25519
+
+# Misc
+*.zip
+*.bak

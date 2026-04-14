@@ -1,0 +1,27 @@
+# Mythos Readiness: Isolated Scanning Environment
+#
+# Usage:
+#   docker compose -f docker/docker-compose.yml up -d scanner
+#   docker compose -f docker/docker-compose.yml exec scanner bash
+#
+# The scanner service has NO network access (network_mode: none).
+# Your source code is mounted read-only at /code.
+
+services:
+  scanner:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ${SCAN_TARGET:-.}:/code:ro
+    network_mode: "none"
+    stdin_open: true
+    tty: true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /home/scanner
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
