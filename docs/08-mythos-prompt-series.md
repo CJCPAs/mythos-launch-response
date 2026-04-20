@@ -1,8 +1,16 @@
 # Mythos Prompt Series: Day 1 Execution Prompts
 
-**Date:** April 11, 2026
+**Date:** April 11, 2026 (last updated April 17, 2026)
 **Purpose:** Copy-paste prompt series for systematic vulnerability discovery with Mythos-class models
 **Adapted from:** [Anthropic Frontier Red Team methodology](https://red.anthropic.com/2026/mythos-preview/)
+
+---
+
+## Which Model Should You Run These Against?
+
+These prompts are model-agnostic. They work with Mythos Preview (if you have it), Claude Opus 4.7 via the Cyber Verification Program (the realistic path for most SMBs — [launched April 16, 2026](https://www.anthropic.com/news/claude-opus-4-7)), or even Opus 4.6. You will get fewer findings with Opus 4.6 than with Mythos, but you will get real findings. As the SANS BugBusters webcast (April 16) put it: AI is good at finding IDOR, BOLA, race conditions, and authorization flaws — and that's true of all three model tiers.
+
+Before you run any of this, read [docs/17-industry-consensus-framework.md](17-industry-consensus-framework.md) to understand where this scan fits in the broader SANS/CSA 11-priority-action framework (this covers PA1: Point AI agents at your code).
 
 ---
 
@@ -15,6 +23,7 @@ These prompts are sequenced. Run them in order. Each phase builds on the previou
 - Have API access configured and tested
 - Have a clean branch ready for security patches
 - Have your team notified you're entering a security sprint
+- **If you are using Opus 4.7 via Cyber Verification Program:** confirm your application is approved. Opus 4.7 blocks high-risk cybersecurity requests by default for users outside the CVP.
 
 **Important:** Replace all `[BRACKETED TEXT]` with your actual values before running.
 

@@ -1,10 +1,10 @@
 # SMALL BUSINESS RESPONSE PLAN: THE POST-MYTHOS THREAT LANDSCAPE
 
-**Date:** April 11, 2026
+**Date:** April 11, 2026 (last updated April 17, 2026)
 **Prepared by:** [mythos-launch-response](https://github.com/CJCPAs/mythos-launch-response) community
 **Audience:** Small and medium businesses (1-250 employees)
 **License:** CC BY 4.0 — share freely
-**Version:** 1.0
+**Version:** 1.4
 
 ---
 
@@ -317,7 +317,25 @@ They already are. AI-enhanced phishing and social engineering have been document
 
 ---
 
-## 10. ABOUT THIS DOCUMENT
+## 10. HOW THIS MAPS TO INDUSTRY CONSENSUS
+
+On April 14, 2026, SANS Institute, the Cloud Security Alliance, [un]prompted, and OWASP GenAI Security Project jointly released an emergency strategy briefing with 11 priority actions for post-Mythos security. The full framework is in [docs/17-industry-consensus-framework.md](17-industry-consensus-framework.md). For an SMB, the 11 actions collapse to **five practical moves**, each backed by a section of this plan:
+
+| Framework Action | This Plan's Section | Why It Maps |
+|------------------|---------------------|-------------|
+| **PA1** Point AI agents at your code | §3.4 + [14-defensive-ai-scanning.md](14-defensive-ai-scanning.md) | Free AI security reviews with generally-available models |
+| **PA2 + PA4** Require AI adoption / governance | §5.3 Managed Security Services | For most SMBs, "AI adoption" = hiring an MDR that already uses it |
+| **PA5 + PA6** Continuous patching + updated risk models | §3.1 Auto-updates + §6 What to Watch For | Auto-updates are your continuous-patching program |
+| **PA7 + PA8** Inventory + hardening | §3.4 Internet-facing inventory + §4.3 Network segmentation + §4.4 IR plan | Builds what industry consensus now mandates |
+| **PA9 + PA10** Deception + automated response | [18-honeytokens-deception.md](18-honeytokens-deception.md) + §5.3 MDR | 90-day deployment path with free tools |
+
+**One practical implication:** industry consensus now treats **honeytokens as a required capability**, not optional. See [docs/18-honeytokens-deception.md](18-honeytokens-deception.md) for a free starter deployment you can complete this month.
+
+**What industry consensus says about AI access:** Anthropic launched Claude Opus 4.7 and the Cyber Verification Program on April 16, 2026. For SMBs who want to do AI-assisted security work, the CVP is the real path — Opus 4.7 costs $5/$25 per million tokens and is officially blessed for vulnerability research and pentesting. See [docs/12-supply-chain-safety.md](12-supply-chain-safety.md) for the full breakdown.
+
+---
+
+## 11. ABOUT THIS DOCUMENT
 
 This response plan was developed as a community resource because small businesses deserve access to clear, actionable security guidance. It is based on analysis of:
 
@@ -333,5 +351,5 @@ This response plan was developed as a community resource because small businesse
 ---
 
 *mythos-launch-response | Community Security Resource*
-*Last updated: April 11, 2026*
+*Last updated: April 17, 2026*
 *Review cycle: Monthly or upon significant threat landscape change*

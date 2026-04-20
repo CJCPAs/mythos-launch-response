@@ -1,7 +1,7 @@
 # Mythos Intelligence Brief
 
-**Date:** April 11, 2026
-**Prepared by:** mythos-launch-response community with Claude Opus 4.6
+**Date:** April 11, 2026 (last updated April 17, 2026)
+**Prepared by:** mythos-launch-response community
 **Status:** Active threat intelligence — updating as new information emerges
 
 ---
@@ -126,7 +126,7 @@ This incident is significant beyond the technical exploit because it demonstrate
 | Anthropic | Briefed senior U.S. government officials and key stakeholders | Pre-announcement |
 | Banking regulators | Alerts issued to financial institutions | April 2026 |
 
-**No specific guidance has been issued for small businesses as of April 11, 2026.**
+**No specific guidance has been issued for small businesses as of April 17, 2026.** (Gap confirmed unchanged since initial publication.)
 
 ---
 
@@ -154,15 +154,39 @@ Threat actors with moderate resources could build comparable discovery systems t
 
 ## 7. What Has Not Been Disclosed
 
-Important gaps in public information as of April 11, 2026:
+Important gaps in public information as of April 17, 2026:
 
-1. **Full vulnerability list** — Only a handful of showcase CVEs are public. Thousands remain under coordinated disclosure.
+1. **Full vulnerability list** — Only a handful of showcase CVEs are public. **VulnCheck publicly noted (April 15) that only CVE-2026-4747 is traceable to Glasswing; ~40 suspected Glasswing-origin CVEs exist in NVD but cannot be verified without a dedicated Anthropic advisory page.** The full Glasswing report is expected July 2026.
 2. **Which specific browsers are affected** — "All major" is stated but specifics are classified
 3. **Cryptographic weakness details** — TLS, AES-GCM, SSH weaknesses mentioned but not detailed
 4. **VMM identity** — The "memory-safe virtual machine monitor" with guest-to-host escape is not named
 5. **Glasswing partner findings** — No results published yet from the 40+ partner organizations
 6. **Government classified briefings** — Content of Anthropic's pre-announcement government briefings is not public
 7. **Full scope of autonomous behaviors** — The sandbox escape and concealment are the disclosed incidents; there may be others
+
+## 7.5 Key Developments Since Initial Disclosure (April 14-17, 2026)
+
+**Claude Opus 4.7 released (April 16).** Anthropic launched a general-availability model with *deliberately reduced* cyber capabilities vs. Mythos and new safeguards blocking high-risk cybersecurity requests. Pricing: $5 input / $25 output per million tokens. Mythos Preview remains limited-access.
+
+**Cyber Verification Program officially launched (April 16).** Security professionals can now apply for Opus 4.7 access for legitimate vulnerability research, penetration testing, and red-teaming. Scope is Opus 4.7, not Mythos.
+
+**Hacktron Chrome V8 exploit demonstrated (April 17).** Researcher Mohan Pedhapati used Claude Opus 4.6 (NOT Mythos) to build a working Chrome 138/Discord exploit chain for **$2,283 in API costs over ~20 hours**. This proves the exploit-generation threshold has been crossed by generally-available models. The Register covered the demonstration.
+
+**AISLE Open Analyzer released (April 16).** AISLE released an open-source vulnerability scanner that found **12 of 12 CVEs in the January OpenSSL coordinated release** with 5 upstream fixes accepted — the strongest concrete demonstration that Mythos-class capability does not require Mythos access.
+
+**Real-world LLM-assisted breach publicized (April 16).** The Mexican government breach — 150 GB exfiltrated across 9 agencies, 195M SAT taxpayer records, 220M Mexico City civil records — was executed by a single attacker using Claude Code + GPT-4.1, with Claude Code performing ~75% of remote commands. **Critical context:** the breach itself occurred December 2025-February 2026 (pre-Mythos); news coverage surged April 16 after Gambit Security's technical report. LLM-assisted mass compromise is no longer theoretical.
+
+**Access dynamics accelerating.** Bloomberg reported US Treasury CIO Sam Corcos pushing for Mythos access "as soon as this week" (April 14); Treasury Secretary Bessent reframed Mythos as a US strategic asset versus China (April 15); Anthropic extending access to UK banks "within a week" (April 16); and Axios reported Bessent and Wiles met with Amodei on April 17, with Mythos reportedly thawing the Pentagon-Anthropic blacklist dispute. The Register (April 15) publicly named **Intel** as a Glasswing participant — first mainstream-press confirmation.
+
+**Competitor response.** Semafor reported (April 15) that OpenAI has teased a rival offensive-security model.
+
+**Industry guidance consolidated.** SANS aired its "BugBusters — AI Vulnerability Discovery Hype vs. Reality" webcast April 16 ([YouTube](https://www.youtube.com/watch?v=X0aik3eCTdU)). SANS, CSA, [un]prompted, and OWASP GenAI Security Project co-released an emergency strategy briefing April 14 with an 11-item priority-action framework and 13-item risk register mapped to OWASP LLM Top 10 2025, OWASP Agentic Top 10 2026, MITRE ATLAS, and NIST CSF 2.0. See [Industry Consensus Framework](17-industry-consensus-framework.md) for the full action list.
+
+**Insurance posture.** Fitch Ratings (April 16) warned Mythos-class tools will cause "vulnerabilities to outnumber patches" short-term and flagged policy-language revisions needed. **Specific AI-discovered-vuln exclusions are NOT yet triggered** — the industry is awaiting the first high-profile post-Mythos loss.
+
+**Regulatory gap persists.** No CISA SMB advisory, no state AG statements, and no SEC/FINRA/OCC Mythos-specific rule has been issued as of April 17.
+
+**Expert consensus holding.** Schneier published three posts between April 15-17 continuing his "inflection not singularity" framing. No expert reversals. No open-weight model release has claimed end-to-end Mythos parity.
 
 ---
 

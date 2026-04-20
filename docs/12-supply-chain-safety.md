@@ -54,7 +54,24 @@ Ensure ALL team members — regardless of location — follow these same protoco
 
 ## AI Model Access Security
 
-### Mythos Preview Access Details (for organizations that receive access)
+### Two Paths to AI-Assisted Security Work (as of April 17, 2026)
+
+**Path 1: Claude Opus 4.7 + Cyber Verification Program (generally available)**
+
+Anthropic released **Claude Opus 4.7 on April 16, 2026** — a general-availability model with *deliberately reduced* cyber capabilities vs. Mythos and new safeguards that block high-risk cybersecurity requests by default. Simultaneously, Anthropic launched the **Cyber Verification Program (CVP)**, the official path for security professionals to unlock legitimate-use access.
+
+| Spec | Value |
+|------|-------|
+| Model | Claude Opus 4.7 |
+| Pricing | $5 input / $25 output per million tokens |
+| Effort tiers | Includes new `xhigh` tier |
+| Vision | Expanded to 2,576 px |
+| Access path | [Cyber Verification Program](https://www.anthropic.com/news/claude-opus-4-7) — application-based |
+| Eligible uses | Vulnerability research, penetration testing, red-teaming |
+
+This is the realistic access path for SMBs, security consultancies, and in-house IT teams.
+
+**Path 2: Claude Mythos Preview (limited-access, stays gated)**
 
 | Platform | Status | Access Method |
 |----------|--------|--------------|
@@ -71,6 +88,16 @@ Ensure ALL team members — regardless of location — follow these same protoco
 | Max output | 128K tokens |
 | Pricing (post-credit) | $25 / $125 per million input/output tokens |
 | Model ID (Foundry) | `claude-mythos-preview` |
+
+### What About Third-Party "Mythos Access" Offers?
+
+**Do not trust unofficial routes.** After the April 7 disclosure, social-media channels filled with offers of "Mythos access" from resellers, Telegram bots, and questionable proxies. None of these are legitimate. The only paths are (1) Glasswing partner status, (2) Cyber Verification Program for Opus 4.7, (3) direct Anthropic invitation for Mythos Preview, or (4) use of the four platforms listed above with allow-list entry.
+
+### Exploit Generation Is Already Cheap with Public Models
+
+A security researcher at Hacktron demonstrated on **April 17, 2026** that Claude Opus 4.6 (the general-availability predecessor to Opus 4.7) could build a working Chrome 138 exploit chain for approximately **$2,283 in API costs over ~20 hours**. This is a research demonstration, not active exploitation — but it proves that the exploit-generation threshold has already been crossed by generally-available models. Source: The Register, "Claude Opus wrote a Chrome exploit for $2,283."
+
+The practical implication: your AI tooling supply chain discipline must assume that attackers are *already* using models your team could access legitimately, to build exploits against software you run.
 
 ### Security Considerations for API Access
 

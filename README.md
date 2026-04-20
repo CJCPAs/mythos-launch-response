@@ -2,7 +2,7 @@
 
 **A community defense plan for the post-Mythos cybersecurity landscape.**
 
-**65 files. 8,000+ lines. 13 stack guides. 19 scanning prompts. 5 audit scripts. Free. Open. Yours.**
+**67 files. 8,800+ lines. 13 stack guides. 19 scanning prompts. 5 audit scripts. Current to April 17, 2026. Free. Open. Yours.**
 
 ---
 
@@ -172,6 +172,8 @@ Full details: [skill/README.md](skill/README.md)
 | 14 | [**Defensive AI Scanning**](docs/14-defensive-ai-scanning.md) | Dev teams | "You don't need Mythos to start scanning." Five focused scan prompts for Claude Opus 4.6 (auth, database, injection, secrets, infrastructure). Tool stacking with Semgrep, TruffleHog, npm audit, OWASP ZAP. Severity triage framework. |
 | 15 | [**Continuous Defense**](docs/15-continuous-defense.md) | Security teams | "Periodic vulnerability management is dead." CI/CD security GitHub Actions YAML (copy-paste). Future Mythos-in-CI placeholder. Runtime monitoring signals. Scan schedule table (per-PR, weekly, monthly, quarterly). Team security culture principles. |
 | 16 | [**Tools & Skills Reference**](docs/16-tools-and-skills-reference.md) | Security teams | Complete tool reference: 5 repo audit scripts with usage. 17 Trail of Bits security skills mapped to scan phases. 5 Snyk MCP tools. 13 open-source scanning tools with install commands. 8 free external verification services. Recommended scanning sequence for pre-Mythos and Day 1. |
+| 17 | [**Industry Consensus Framework**](docs/17-industry-consensus-framework.md) | Security leaders | Synthesis of the SANS/CSA/[un]prompted/OWASP GenAI joint emergency briefing (Apr 14) and SANS BugBusters webcast (Apr 16). All 11 priority actions verbatim with SMB translations. CSA "This week / 45 days / 12 months" framework. What AI is good at (IDOR, BOLA, race conditions, authorization flaws). Mapped to every relevant resource in this repo. |
+| 18 | [**Honeytokens and Deception**](docs/18-honeytokens-deception.md) | Everyone | Maps to SANS Priority Action PA9. Free tools (Thinkst Canarytokens, DIY DNS canaries) with 10-minute deployment guides. 5-honeytoken starter set for an SMB. Why deception matters more after Mythos (automated agentic attackers trip canaries). 90-day deployment plan under $100. What honeytokens do NOT replace. |
 | — | [**Glossary**](docs/glossary.md) | Non-technical | 40+ technical terms explained in plain English. Zero-day, ROP chain, KASLR, heap spray, EDR, MTTD/MTTR, RLS, WAF, SSRF — every term used in this repo, translated for a non-technical reader. |
 
 ---
@@ -307,14 +309,14 @@ So we built it. We used AI to research, we called our contacts, and we organized
 
 | Category | Count | Examples |
 |----------|:-----:|---------|
-| **Documentation** | 19 files | Intelligence, response plans, analysis, playbooks, guides |
+| **Documentation** | 21 files | Intelligence, response plans, analysis, playbooks, Industry Consensus Framework, Honeytokens |
 | **Stack Guides** | 13 guides | M365, Google, WordPress, AWS, Docker, Windows, VPN, network, and more |
 | **Audit Scripts** | 5 scripts | Windows PowerShell, Linux bash, network, dependencies, CISA KEV |
 | **Claude Code Skill** | 16 files | Interactive co-pilot with 14 stack-specific references — [install it](skill/README.md) |
 | **Templates** | 3 templates | Vendor inquiry, IR contacts, vulnerability findings |
 | **Docker** | 2 files | Isolated scanning environment with all tools pre-installed |
 | **Community** | 6 files | README, STORY, CHANGELOG, ROADMAP, CONTRIBUTING, DISCLAIMER |
-| **Total** | **65 files** | **8,000+ lines of actionable content** |
+| **Total** | **67 files** | **8,800+ lines of actionable content** |
 
 ---
 
@@ -328,8 +330,13 @@ So we built it. We used AI to research, we called our contacts, and we organized
 | March 31, 2026 | Trojanized Claude Code forks appear as malware |
 | **April 7, 2026** | **Official Mythos Preview + Project Glasswing announcement** |
 | April 11, 2026 | This repo created |
+| **April 14, 2026** | **SANS / CSA / [un]prompted / OWASP GenAI joint emergency briefing** (11 priority actions, 13-item risk register) |
+| **April 16, 2026** | **Claude Opus 4.7 released + Cyber Verification Program launched** |
+| **April 16, 2026** | **SANS BugBusters webcast airs** (presenters: Skoudis, Wright, Elgee) |
+| **April 16, 2026** | **AISLE Open Analyzer released** — open-source tool finds 12/12 OpenSSL CVEs |
+| **April 17, 2026** | **Hacktron demonstrates Chrome exploit via Opus 4.6 for $2,283** — threshold crossed with generally-available models |
 | **~July 7, 2026** | **Glasswing 90-day report (patched vulnerabilities become public)** |
-| ~October 2026 | Open-weight models expected to reach similar capabilities |
+| ~October 2026 | Open-weight models expected to reach similar capabilities (Stamos) |
 
 ---
 

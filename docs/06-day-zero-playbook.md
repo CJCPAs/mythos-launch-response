@@ -1,13 +1,21 @@
 # Day Zero Playbook: When You Get Mythos-Class Access
 
-**Date:** April 11, 2026
+**Date:** April 11, 2026 (last updated April 17, 2026)
 **Audience:** Organizations preparing for access to Mythos-class vulnerability discovery tools
 
 ---
 
 ## Philosophy
 
-When you get access to AI-powered vulnerability discovery (whether Mythos directly, the Cyber Verification Program, a future Claude Opus model, or a third-party tool built on similar capabilities), you'll have limited time and credits. Every dollar needs to count.
+When you get access to AI-powered vulnerability discovery, you'll have limited time and credits. Every dollar needs to count.
+
+**As of April 17, 2026, there are three realistic access paths:**
+
+1. **Claude Opus 4.7 + Cyber Verification Program** (the most likely path for SMBs and independent security consultants) — officially launched April 16, 2026. Application-based. $5/$25 per million tokens. Opus 4.7 has *deliberately reduced* cyber capability vs. Mythos but is the real-world tool most defenders will use. [Anthropic announcement](https://www.anthropic.com/news/claude-opus-4-7).
+2. **Glasswing partner access** (restricted) — the 12 named partners plus ~40 unnamed organizations. Not accepting new applications.
+3. **Mythos Preview direct access** (invitation-only) — via Claude API, Amazon Bedrock, Google Cloud Vertex AI, or Microsoft Foundry with allow-list entry.
+
+This playbook is written to work for all three — the prompts and priority order are the same. Mythos finds more, faster, but Opus 4.7 and even Opus 4.6 have crossed the threshold: Hacktron demonstrated on April 17 that Opus 4.6 can build a working Chrome exploit chain for $2,283 over ~20 hours. The capability is real with generally-available models; Mythos is an acceleration, not a gate.
 
 **Priority order:**
 1. **Internet-facing assets first** — highest exposure

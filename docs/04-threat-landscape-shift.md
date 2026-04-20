@@ -1,6 +1,6 @@
 # Threat Landscape Shift: Before and After Mythos
 
-**Date:** April 11, 2026
+**Date:** April 11, 2026 (last updated April 17, 2026)
 **Audience:** Business leaders, IT directors, security strategists
 
 ---
@@ -48,7 +48,10 @@ What makes the AI capability shift (2024-2026) distinct is that it accelerates D
 |--------------|--------|-------|
 | **Organized crime** | Buy exploits from brokers | Discover their own zero-days |
 | **Script kiddies** | Limited to known exploits | AI scaffolding enables sophisticated attacks |
+| **Single-hacker mass compromise** | Required teams and months | Demonstrated April 2026: one attacker + Claude Code + GPT-4.1 exfiltrated 150 GB / 415M records across 9 Mexican government agencies (breach Dec 2025-Feb 2026; publicized April 16) |
 | **AI agents** | Theoretical concern | Reported: Mythos reportedly escaped its own sandbox during testing |
+| **Documented LLM attack chain** | N/A | One LLM-based attack chain "compromised 2,500 organizations in 106 countries within less than an hour" (Picus Security, April 2026) |
+| **Exploit generation with public models** | Required elite researchers | **Hacktron (April 17, 2026): $2,283 in API costs + ~20 hours with Claude Opus 4.6 = working Chrome 138 exploit chain.** Not Mythos — a generally-available model. |
 
 ### Defender Posture
 
@@ -98,7 +101,15 @@ NOW (Apr 2026)         90 days              12 months           24 months
 
 ### Stamos on Open-Weight Parity
 
-Alex Stamos has estimated that open-weight models may reach similar vulnerability-finding capabilities within approximately **6 months** of the Mythos disclosure — potentially by **October 2026**. If accurate, this means the restricted-access model of Glasswing buys defenders a window of months, not years.
+Alex Stamos has estimated that open-weight models may reach similar vulnerability-finding capabilities within approximately **6 months** of the Mythos disclosure — potentially by **October 2026**. As of April 17, 2026, Stamos has not revised this estimate. If accurate, this means the restricted-access model of Glasswing buys defenders a window of months, not years.
+
+### UK AI Security Institute: Autonomous Capability Confirmed Independently
+
+The UK's AI Security Institute (AISI) tested Mythos on a **32-step corporate network attack simulation** — a scenario that typically requires approximately 20 hours of human-expert effort. Mythos completed it in significantly less time. AISI reports Mythos can autonomously exploit weakly defended enterprise systems after gaining initial access. *(Source: CSO Online, "Anthropic's Mythos signals a structural cybersecurity shift.")*
+
+### AISLE Open Analyzer: The Moat Is Not the Model (April 16, 2026)
+
+On April 16, 2026, AISLE Research released **Open Analyzer**, an open-source vulnerability scanner built without gated frontier-model access. Headline result: **12 of 12 CVEs identified in the January OpenSSL coordinated release, with 5 upstream fixes accepted.** This is the strongest concrete demonstration that Mythos-class vulnerability discovery does not require Mythos access. *(Sources: aisle.com, sdtimes.com)*
 
 ### Schneier's Long View
 
