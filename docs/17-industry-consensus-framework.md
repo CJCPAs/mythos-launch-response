@@ -118,6 +118,25 @@ CSA's core concept: **VulnOps** — vulnerability management as a permanent, fun
 
 ---
 
+## Live Case Study: The April 19 Vercel Breach *(added in v1.6.0)*
+
+On April 19, 2026 — five days after the SANS/CSA framework was published — Vercel disclosed a breach caused by a compromised third-party AI tool (Context.ai) whose OAuth integration into a Vercel employee's Google Workspace was used to pivot into Vercel internal systems. Environment variables not marked "sensitive" on a "limited subset" of customer accounts were exfiltrated.
+
+This is the clearest real-world example of the attack class the framework exists to prevent. Two priority actions would have directly contained it:
+
+| Framework Action | How It Applies to the Vercel Breach |
+|------------------|-------------------------------------|
+| **PA3 — Defend Your Agents** (This month, CRITICAL) | Context.ai had deployment-level OAuth scopes on an employee's Google Workspace account — far broader than it needed. PA3 calls for auditing prompts, tool definitions, kill switches, and scope boundaries on every AI agent and integration. Context.ai's scopes were never reduced to least-privilege. |
+| **PA7 — Inventory and Reduce Attack Surface** (This month, HIGH) | The attack succeeded in part because the Context.ai connection was not part of a maintained AI-tool inventory with periodic OAuth-scope audits. PA7 mandates that inventory. |
+
+**The framework-to-implementation gap this exposes:** SANS/CSA published the framework on April 14. Vercel was already compromised (Context.ai breach date is pre-April 19). The actions would have contained this, but they had not yet been deployed. This is precisely the gap that **PA11 — Stand Up VulnOps** is meant to close: making framework implementation a permanent funded function rather than an ad-hoc response.
+
+**Primary source:** https://vercel.com/kb/bulletin/vercel-april-2026-security-incident
+
+**Mythos attribution:** None. This is conventional supply-chain OAuth abuse, not a Mythos-enabled compromise. But it is the clearest near-term argument for implementing the framework *now*, because the threat-actor class executing this attack is already operating at "highly sophisticated" levels per Vercel's own characterization.
+
+---
+
 ## What Industry Consensus Does NOT Require
 
 Also worth noting what the consensus is **not** saying:

@@ -1,14 +1,40 @@
 # AI Tooling Supply Chain Safety
 
-**Trojanized AI coding tools are already being used as malware lures.**
+**Trojanized AI coding tools and compromised AI SaaS integrations are already being used to breach major platforms.**
 
 ---
 
 ## The Threat
 
-On March 31, 2026, a Claude Code source-map leak was repurposed as a lure for malware distribution. Attackers created trojanized forks of AI coding agents, using the "Claude Code" branding to trick developers into running malicious software.
+Two real-world incidents in the past three weeks make this concrete:
 
-This is a new attack vector that will accelerate as AI coding tools become more popular and as Mythos awareness drives demand for AI security tools.
+### March 31, 2026 — Trojanized Claude Code forks
+A Claude Code source-map leak was repurposed as a lure for malware distribution. Attackers created trojanized forks of AI coding agents, using the "Claude Code" branding to trick developers into running malicious software.
+
+### April 19, 2026 — Vercel breach via Context.ai OAuth compromise *(added in v1.6.0)*
+**Scope:** Vercel, a cloud development and hosting platform used by millions of developers, disclosed an unauthorized access incident on April 19, 2026.
+
+**Attack chain:**
+1. A third-party AI tool (**Context.ai**) was compromised
+2. Context.ai's OAuth integration with a Vercel employee's Google Workspace account was leveraged to compromise that account
+3. The attacker pivoted from the employee account into Vercel internal systems
+4. Environment variables NOT marked "sensitive" on affected customer accounts were enumerated and exfiltrated
+
+**What Vercel confirmed accessed:** certain internal Vercel systems, a "limited subset" of customer Vercel credentials, and environment variables not marked sensitive.
+
+**What Vercel confirmed NOT accessed:** environment variables marked "sensitive" (encrypted at rest). The "sensitive" flag was the single control that worked.
+
+**Alleged but not confirmed:** ShinyHunters claimed on BreachForums to have access keys, source code, database data, API keys, NPM tokens, GitHub tokens, and 580 employee records, demanding $2M ransom. Vercel's bulletin neither confirms nor denies source code access.
+
+**Vercel response:** engaged Mandiant and additional cybersecurity firms, notified law enforcement, engaged Context.ai to assess upstream scope. Characterized the attacker as "highly sophisticated based on their operational velocity and detailed understanding of Vercel's systems."
+
+**Attribution to Mythos:** NONE. This is a conventional supply-chain OAuth attack, not a Mythos-enabled compromise. But it is the clearest real-world example of the attack class this document exists to prevent.
+
+**Primary source:** https://vercel.com/kb/bulletin/vercel-april-2026-security-incident
+
+### Why This Matters
+
+Both incidents establish the pattern: **AI tool supply chain is now a primary attack surface**. It will accelerate as AI coding tools become more popular and as Mythos awareness drives demand for AI security tools. The Vercel incident proves the blast radius can reach a Tier-1 infrastructure provider via a single compromised AI vendor's OAuth integration.
 
 ---
 
@@ -92,6 +118,19 @@ This is the realistic access path for SMBs, security consultancies, and in-house
 ### What About Third-Party "Mythos Access" Offers?
 
 **Do not trust unofficial routes.** After the April 7 disclosure, social-media channels filled with offers of "Mythos access" from resellers, Telegram bots, and questionable proxies. None of these are legitimate. The only paths are (1) Glasswing partner status, (2) Cyber Verification Program for Opus 4.7, (3) direct Anthropic invitation for Mythos Preview, or (4) use of the four platforms listed above with allow-list entry.
+
+### Four-Channel Vendor Check (added in v1.6.0 after Vercel/Context.ai breach)
+
+The Vercel breach went undetected because the attacker came through a trusted OAuth connection and looked like the legitimate employee. Standard monitoring does not catch this. Before authorizing any new AI tool to connect to your business systems, and periodically for tools already authorized, run a four-channel check:
+
+| Channel | What to Check | Where |
+|---------|---------------|-------|
+| **DNS / firewall logs** | Unexpected resolution to AI vendor domains; anomalous egress volumes | Router, firewall, DNS filtering provider |
+| **Browser history / bookmarks** | Which AI tools have been visited from business workstations | Chrome, Edge, Firefox on developer and admin machines |
+| **Email** | Signup confirmations, invitations, onboarding emails from AI vendors | Mailbox search across all accounts |
+| **Identity provider audit logs** | OAuth consent grants to any AI tool | Entra ID (Microsoft 365) → Enterprise Applications + Audit logs → "Consent to application" events; Google Workspace → Admin audit log → OAuth grants |
+
+DNS and identity-provider audit logs are the most reliable because users cannot clear them. Any one channel finding an unauthorized AI tool is sufficient to escalate.
 
 ### Exploit Generation Is Already Cheap with Public Models
 

@@ -81,6 +81,20 @@
 | U.S. Treasury / Federal Reserve | Apr 2026 | Emergency bank CEO meetings |
 | IMF (Georgieva) | Apr 2026 | "Massive cyber risks" to monetary system |
 
+## Supply-Chain Incidents (Added April 19, 2026)
+
+The Vercel breach is the clearest real-world example of the AI-tool-supply-chain attack class in docs 12, 17, and 18:
+
+| Source | Date | URL | Key Finding |
+|--------|------|-----|-------------|
+| **Vercel: April 2026 security incident bulletin** | Apr 19-20, 2026 | https://vercel.com/kb/bulletin/vercel-april-2026-security-incident | Primary source. Context.ai OAuth compromise → Google Workspace → Vercel internal systems → customer env vars not marked "sensitive." Mandiant engaged. No Mythos attribution. |
+| **BleepingComputer: Vercel confirms breach as hackers claim to sell stolen data** | Apr 19, 2026 | https://www.bleepingcomputer.com/news/security/vercel-confirms-breach-as-hackers-claim-to-be-selling-stolen-data/ | ShinyHunters ransom demand; alleged scope (access keys, source code, NPM/GitHub tokens, 580 employee records) |
+| **CyberInsider: Vercel security incident** | Apr 19, 2026 | https://cyberinsider.com/vercel-confirms-security-incident-as-hackers-claim-to-sell-internal-access/ | Third-party confirmation |
+| **iTnews: Vercel advises secrets rotation** | Apr 19, 2026 | https://www.itnews.com.au/news/cloud-deployment-firm-vercel-breached-advises-secrets-rotation-625197 | Customer-action framing |
+| **Cryptopolitan: Breach tied to compromised AI tool** | Apr 19, 2026 | https://www.cryptopolitan.com/vercel-breach-tied-to-compromised-ai-tool/ | AI-tool angle |
+| **Startup Fortune: Vercel Breach Exposes AI Tool Supply Chain Risk Ahead of IPO** | Apr 19, 2026 | https://startupfortune.com/vercel-breach-exposes-ai-tool-supply-chain-risk-ahead-of-ipo/ | Strategic framing |
+| **Hacker News: Vercel April 2026 security incident** | Apr 19, 2026 | https://news.ycombinator.com/item?id=47824463 | Community discussion |
+
 ## Real-World Incidents and Proof-of-Capability (Added April 17, 2026 second refresh)
 
 Direct evidence that LLM-assisted offensive capability has crossed operational thresholds:

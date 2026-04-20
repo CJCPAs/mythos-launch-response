@@ -111,6 +111,22 @@ Think of honeytokens as the smoke detectors of your security program. You still 
 
 ---
 
+## Named Example: What a Canary Would Have Caught at Vercel *(added in v1.6.0)*
+
+On April 19, 2026, Vercel disclosed that attackers pivoted through a compromised third-party AI tool (Context.ai) into a Vercel employee's Google Workspace, then into Vercel internal systems, and enumerated customer environment variables that were not marked "sensitive." Vercel's own monitoring did not catch the pivot because the attacker activity looked like legitimate employee activity.
+
+**What a well-placed honeytoken would have done:**
+
+A canary environment variable named something like `INTERNAL_PROD_DB_URL` or `LEGACY_ADMIN_TOKEN` — placed on a representative Vercel project, wired to a Canarytokens DNS trigger or HTTP canary — would have fired the instant the attacker enumerated environment variables. That is exactly the operation the attacker performed to exfiltrate secrets. A canary would have alerted within seconds.
+
+**Why this works:** the attacker does not know which variables are real and which are bait. Automated agentic attackers — and increasingly human attackers relying on LLM assistance — tend to dump everything and sort later. Bait dumps into the exfil pile just like real data, and the trip fires.
+
+**Takeaway:** For any platform where you store environment variables or secrets in cloud panels (Vercel, Railway, Fly, Render, Cloudflare Pages, Netlify, GitHub Codespaces secrets), plant at least one canary env var per project. It is free, takes 10 minutes, and is one of the only controls that fires on exactly the right action.
+
+**Primary source:** https://vercel.com/kb/bulletin/vercel-april-2026-security-incident
+
+---
+
 ## Why This Matters More After Mythos
 
 Three specific post-Mythos reasons to deploy honeytokens this quarter:

@@ -188,6 +188,8 @@ Important gaps in public information as of April 17, 2026:
 
 **Expert consensus holding.** Schneier published three posts between April 15-17 continuing his "inflection not singularity" framing. No expert reversals. No open-weight model release has claimed end-to-end Mythos parity.
 
+**April 19 — Vercel breach via Context.ai OAuth compromise.** Vercel disclosed an unauthorized-access incident caused by the compromise of a third-party AI tool (Context.ai) whose OAuth integration into a Vercel employee's Google Workspace was used to pivot into Vercel internal systems. A "limited subset" of customer Vercel credentials and environment variables not marked "sensitive" were accessed. Vercel engaged Mandiant and engaged Context.ai to assess upstream scope, and characterized the attacker as "highly sophisticated." **This is NOT attributed to Mythos** — it is conventional supply-chain OAuth abuse. But it is the clearest real-world example so far of the AI-tool-supply-chain attack class that doc 12 of this repo was written to defend against, and the clearest near-term argument for implementing the SANS/CSA 11 priority actions now. See [docs/12-supply-chain-safety.md](12-supply-chain-safety.md) for the full case-study integration.
+
 ---
 
 ## 8. Assessment

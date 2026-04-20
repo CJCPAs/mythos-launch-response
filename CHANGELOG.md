@@ -2,6 +2,26 @@
 
 All notable updates to this project.
 
+## [1.6.0] - 2026-04-19 (Vercel/Context.ai supply-chain breach case-study release)
+
+### Added
+- **Supply Chain Safety (doc 12)** — Integrated the April 19 Vercel breach as a named real-world case study alongside the March 31 trojanized Claude Code forks incident. Full attack chain, scope, Mandiant engagement, attacker characterization, and Mythos non-attribution. New "Four-Channel Vendor Check" section covering DNS/firewall, browser, email, and identity-provider audit logs as the practical check before authorizing any new AI tool.
+- **Industry Consensus Framework (doc 17)** — New "Live Case Study: The April 19 Vercel Breach" section mapping the incident to Priority Actions PA3 (Defend Your Agents) and PA7 (Inventory and Reduce Attack Surface). Adds "framework-to-implementation gap" synthesis tying the breach to the VulnOps (PA11) argument.
+- **Honeytokens and Deception (doc 18)** — New "Named Example: What a Canary Would Have Caught at Vercel" section showing that a canary environment variable wired to a Canarytokens DNS trigger would have fired at the exact moment the attacker enumerated env vars — one of the few controls that fires on precisely the right action.
+- **Intelligence Brief (doc 00) §7.5** — Added April 19 Vercel breach paragraph with explicit "NOT attributed to Mythos" framing and cross-reference to doc 12.
+- **Sources and References (doc 07)** — New "Supply-Chain Incidents" category with 7 sources covering the Vercel breach (primary bulletin, BleepingComputer, CyberInsider, iTnews, Cryptopolitan, Startup Fortune, Hacker News discussion).
+- **README Key Dates** — Added April 19, 2026 Vercel breach entry.
+
+### Context
+The Vercel incident — disclosed the morning of April 19 with full attack-origin detail by evening — is the clearest real-world validation to date of the AI-tool-supply-chain attack class this repo addresses. A third-party AI tool (Context.ai) was compromised; its OAuth integration to a Vercel employee's Google Workspace was used to pivot into Vercel internal systems; a "limited subset" of customer credentials and non-sensitive environment variables were exfiltrated. The "sensitive" flag on env vars (encrypted at rest) was the single control that worked.
+
+**Attribution:** Vercel's bulletin makes no reference to Mythos or Glasswing. The attacker was characterized by Vercel as "highly sophisticated" but the attack class is conventional supply-chain OAuth abuse, not Mythos-enabled autonomous discovery. The significance for this repo is not that it proves Mythos is being used in attacks — it isn't — but that it is the clearest near-term argument for implementing the SANS/CSA 11 priority actions **now**, because the attacker class executing these attacks is already operating at a sophisticated level even without frontier-model assistance.
+
+**Response-plan implications:**
+- Doc 12's four-channel vendor check is now the operational recommendation for every organization before authorizing a new AI-tool OAuth integration.
+- Doc 18's canary-env-var pattern is now one of the few controls that measurably would have caught the Vercel attack class.
+- Doc 17's "framework-to-implementation gap" is illustrated by a specific timeline: SANS/CSA framework published April 14; Vercel was already compromised pre-April 19. The framework works only if deployed.
+
 ## [1.5.0] - 2026-04-17 (third refresh — gap-closing release)
 
 ### Added
