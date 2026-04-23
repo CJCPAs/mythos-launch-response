@@ -1,7 +1,7 @@
 # Sources and References
 
-**Last updated:** April 17, 2026 (second refresh — 55+ sources)
-**Total sources:** 55+
+**Last updated:** April 22, 2026 (third refresh — 80+ sources)
+**Total sources:** 80+
 
 ---
 
@@ -80,6 +80,38 @@
 | NIST IR 8596 (draft) | Dec 2025 | Cybersecurity Framework Profile for AI |
 | U.S. Treasury / Federal Reserve | Apr 2026 | Emergency bank CEO meetings |
 | IMF (Georgieva) | Apr 2026 | "Massive cyber risks" to monetary system |
+
+## Vercel Breach Follow-Ups (Added April 22, 2026)
+
+Post-disclosure material from April 20-22 that refines the original April 19 account:
+
+| Source | Date | URL | Key Finding |
+|--------|------|-----|-------------|
+| **Vercel KB Bulletin (updates)** | Apr 20-22, 2026 | https://vercel.com/kb/bulletin/vercel-april-2026-security-incident | Apr 20: npm packages confirmed NOT compromised. Apr 22: "small number of additional accounts" compromised plus "customer accounts with evidence of prior compromise" independent of Context.ai chain (social engineering/malware). |
+| **Context.ai Security Update** | ~Apr 20, 2026 | https://context.ai/security-update | Patient zero: Lumma Stealer infection of Context.ai employee via Roblox auto-farm script download (Feb 2026). Enterprise Bedrock deployments unaffected; consumer OAuth tokens were the vector. |
+| **CyberScoop: Lumma Stealer origin** | Apr 2026 | https://cyberscoop.com/vercel-security-breach-third-party-attack-context-ai-lumma-stealer/ | Technical detail on the initial infection vector |
+| **CSA Research Note: AI SaaS as Enterprise Attack Vector** | Apr 20, 2026 | https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-saas-supply-chain-vercel-contextai-2026/ | Frames incident as "template threat, not an anomaly"; extends April 13 joint SANS/CSA briefing |
+| **GitGuardian: Non-Sensitive Env Vars Need Investigation Too** | ~Apr 20, 2026 | https://blog.gitguardian.com/vercel-april-2026-incident-non-sensitive-environment-variables-need-investigation-too/ | Concrete incident-response playbook with ggshield workflow |
+| **SpecterOps: Vercel Breach Analysis** | Apr 21, 2026 | https://specterops.io/blog/2026/04/21/the-vercel-breach-explains-why-identity-attack-path-management-cant-wait/ | Frames as identity-attack-path management problem |
+| **The Register: AI-driven tradecraft velocity** | Apr 21, 2026 | https://www.theregister.com/2026/04/21/vercel_ceo_points_to_aidriven/ | Amplifies Rauch's "AI-augmented attacker" claim |
+| **Trend Micro: OAuth Supply Chain analysis** | Apr 2026 | https://www.trendmicro.com/en_us/research/26/d/vercel-breach-oauth-supply-chain.html | OAuth-hygiene framing |
+| **Obsidian Security: SaaS Supply Chain** | Apr 2026 | https://www.obsidiansecurity.com/blog/the-vercel-breach-and-the-growing-saas-supply-chain-challenge | SaaS supply chain angle |
+| **VentureBeat: OAuth gap analysis** | ~Apr 22, 2026 | https://venturebeat.com/security/vercel-breach-exposes-the-oauth-gap-most-security-teams-cannot-detect-scope-or-contain | "OAuth gap most security teams cannot detect scope or contain" |
+| **BleepingComputer: ShinyHunters denial** | Apr 2026 | https://www.bleepingcomputer.com/news/security/vercel-confirms-breach-as-hackers-claim-to-be-selling-stolen-data/ | ShinyHunters denied involvement despite BreachForums listing |
+| **SANS blog: AI Vulnerability Discovery Is Already Here** | Apr 2026 | https://www.sans.org/blog/ai-vulnerability-discovery-already-here-we-have-been-doing-it-15-months | Follow-up to April 16 BugBusters webcast; names models (GPT-5.4 + Opus 4.6) used on DataEase (~1.7M LOC) |
+| **CyberAgents Exchange VulnOps Playbook** | Apr 13, 2026 | https://cyberagents.exchange/playbooks/vulnops/ | Vendor-aligned 5-stage VulnOps operationalization workflow (not an industry framework) |
+
+## Known Exploited Vulnerabilities — April 19-22 Window
+
+| CVE | Product | Added to KEV | Note |
+|-----|---------|:-:|------|
+| CVE-2026-33825 ("BlueHammer") | Microsoft Defender (EoP) | Apr 22, 2026 | Public PoC by researcher "Chaotic Eclipse"; disclosed Apr 7. Not Mythos-attributed. |
+| CVE-2026-34197 | Apache ActiveMQ | Apr 16, 2026 | Horizon3.ai with Claude assistance (not Mythos Preview specifically) |
+| CVE-2026-20133 (+2 others) | Cisco Catalyst SD-WAN Manager | Apr 20, 2026 | Not Mythos-attributed |
+| CVE-2025-2749 | Kentico Xperience | Apr 20, 2026 | Not Mythos-attributed |
+| CVE-2025-48700 | Zimbra | Apr 20, 2026 | Not Mythos-attributed |
+
+*Note: None of the April 19-22 KEV additions are attributed to Mythos. Only CVE-2026-4747 (FreeBSD NFS, March) remains publicly Mythos-attributed.*
 
 ## Supply-Chain Incidents (Added April 19, 2026)
 

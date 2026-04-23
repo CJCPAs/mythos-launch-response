@@ -114,7 +114,45 @@ grep -rn "NEXT_PUBLIC_" .env* ./src/
 - NEVER prefix server-side secrets with `NEXT_PUBLIC_`
 - Use `server-only` package to prevent accidental client imports
 - Verify build logs don't contain secrets
-- Use Vercel's encrypted environment variables, not `.env` files in production
+- Use Vercel's environment variables — **and mark secrets as `sensitive`, not just `encrypted`** (see below)
+
+### `sensitive` vs `encrypted` on Vercel (lesson from the April 2026 Vercel/Context.ai breach)
+
+Vercel stores three classes of environment variables:
+
+| Type | Storage | Readable via API? | Breach exposure |
+|------|---------|:-:|:-:|
+| `plain` | Unencrypted | Yes | **Fully exposed** |
+| `encrypted` | Encrypted at rest | **Yes — the API can read the value** | **At risk** |
+| `sensitive` | Encrypted, non-readable | **No — the API cannot read the value** | **Protected** |
+
+The Vercel April 2026 bulletin explicitly stated that environment variables marked `sensitive` were not accessed; encrypted (but non-sensitive) variables were. Many developers assume "encrypted" equals "protected." **It does not.** Encrypted values are readable through the Vercel API by anyone with account-level access.
+
+**Rule:** every real secret (API keys, service-role keys, webhook secrets, signing keys) should be marked `sensitive`. Not just `encrypted`. Not just stored in Vercel's UI.
+
+### Audit your own Vercel env vars today
+
+Use the [GitGuardian post-Vercel-incident guidance](https://blog.gitguardian.com/vercel-april-2026-incident-non-sensitive-environment-variables-need-investigation-too/) as a starting playbook:
+
+```bash
+# 1. Pull all env vars locally across every environment
+vercel env pull .env.production --environment=production
+vercel env pull .env.preview --environment=preview
+vercel env pull .env.development --environment=development
+
+# 2. Scan them for secrets that are not flagged sensitive
+ggshield secret scan path .env.production .env.preview .env.development
+
+# 3. For any real secret not marked sensitive: rotate + re-add as sensitive
+```
+
+Setting `sensitive` currently requires the dashboard or the Vercel REST API — the CLI (`vercel env add`) does not have a `--sensitive` flag as of CLI v50.37.
+
+### The `sk_live_*` in preview/dev footgun
+
+A common Next.js/Vercel pattern is having the same environment variable value across `production`, `preview`, and `development` scopes "to keep things simple." This is how live Stripe keys end up reachable from preview deployments — which means a preview URL (discoverable via GitHub PR comments, Twitter, etc.) can charge real cards.
+
+Audit rule: `STRIPE_SECRET_KEY` on preview/dev should be `sk_test_*`, not `sk_live_*`. Same principle for any production-vs-test vendor key pair (Resend, Postmark, Twilio, etc.).
 
 ---
 
@@ -159,9 +197,32 @@ async function DashboardPage() {
 
 ### Deployment Protection
 - Enable Vercel Authentication for preview deployments
-- Set up deployment protection for production
+- Set up Deployment Protection to **"Standard" at minimum** on production projects
+- Rotate any Deployment Protection tokens after an account security event
 - Use Vercel Firewall if available on your plan
-- Review all connected Git repos and integrations
+
+### OAuth and third-party integration hygiene (post-Context.ai/Vercel breach)
+
+The April 2026 Vercel breach originated with a compromised third-party AI tool (Context.ai) that had OAuth access to a Vercel employee's Google Workspace — not a direct attack on Vercel. Same pattern applies to your Vercel account.
+
+**Audit your Vercel integrations:**
+- https://vercel.com/account/integrations — review every third-party OAuth integration. Remove anything you don't actively use.
+- https://vercel.com/account/tokens — review all personal and team API tokens. Rotate anything older than 90 days or held by a service you no longer use.
+- **Teams settings → Members** — confirm only active humans have access. Remove former contractors and stale service accounts.
+- **Connected Git integrations** — GitHub/GitLab/Bitbucket. Verify scope is repo-level, not org-wide admin.
+
+**Before authorizing any new AI tool to connect to your Vercel account**, run the four-channel check in [docs/12-supply-chain-safety.md](../docs/12-supply-chain-safety.md#four-channel-vendor-check): DNS/firewall logs, browser history, email invitations, and identity-provider audit logs.
+
+### Long-term: move secrets out of Vercel
+
+Vercel-direct env vars are convenient but concentrate risk. After a breach you are stuck rotating everything manually. Consider migrating to a dedicated secret manager that syncs to Vercel:
+
+- **[Doppler](https://www.doppler.com/)** — native Vercel integration, auto-sync, audit logs, rotation is a single command
+- **[Infisical](https://infisical.com/)** — open-source option, self-hostable
+- **[1Password Secrets Automation](https://1password.com/developers/secrets-automation)** — if already on 1Password
+- **[HashiCorp Vault](https://www.hashicorp.com/en/products/vault)** — heavyweight, appropriate for regulated workloads
+
+With a secret manager in front of Vercel, a compromised Vercel account is a smaller blast radius — secrets live in the manager, Vercel only ever sees short-lived synced copies, and rotation is one command instead of thirty.
 
 ---
 

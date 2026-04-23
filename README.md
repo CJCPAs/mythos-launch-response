@@ -2,7 +2,7 @@
 
 **A community defense plan for the post-Mythos cybersecurity landscape.**
 
-**67 files. 9,000+ lines. 13 stack guides. 19 scanning prompts. 5 audit scripts. Current to April 19, 2026. Free. Open. Yours.**
+**67 files. 9,100+ lines. 13 stack guides. 19 scanning prompts. 5 audit scripts. Current to April 22, 2026. Free. Open. Yours.**
 
 ---
 
@@ -336,6 +336,8 @@ So we built it. We used AI to research, we called our contacts, and we organized
 | **April 16, 2026** | **AISLE Open Analyzer released** — open-source tool finds 12/12 OpenSSL CVEs |
 | **April 17, 2026** | **Hacktron demonstrates Chrome exploit via Opus 4.6 for $2,283** — threshold crossed with generally-available models |
 | **April 19, 2026** | **Vercel breach via Context.ai OAuth compromise** — real-world supply-chain-AI attack; Mandiant engaged; no Mythos attribution |
+| **April 20-22, 2026** | **Vercel investigation expands:** Lumma Stealer patient zero (Roblox auto-farm script on Context.ai employee, Feb 2026); pre-existing customer compromises found independently; CSA Research Note extends SANS briefing |
+| **April 22, 2026** | **CVE-2026-33825 ("BlueHammer") Defender EoP added to CISA KEV** with public PoC; no Mythos attribution |
 | **~July 7, 2026** | **Glasswing 90-day report (patched vulnerabilities become public)** |
 | ~October 2026 | Open-weight models expected to reach similar capabilities (Stamos) |
 

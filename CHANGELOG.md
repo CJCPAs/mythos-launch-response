@@ -2,6 +2,28 @@
 
 All notable updates to this project.
 
+## [1.7.0] - 2026-04-22 (April 19-22 intel refresh + Next.js/Vercel stack guide upgrade)
+
+### Added
+- **stacks/nextjs-vercel.md** — Substantial upgrade to integrate the operational lessons the Vercel/Context.ai breach taught. New sections on the `sensitive` vs. `encrypted` env-var distinction (the single control that worked), a concrete audit workflow using GitGuardian's `ggshield` against `vercel env pull` output, the `sk_live_*` in preview/dev footgun, OAuth and third-party integration hygiene referencing doc 12's four-channel vendor check, and long-term secret-manager options (Doppler / Infisical / 1Password / HashiCorp Vault).
+- **docs/12-supply-chain-safety.md** — New "April 20-22 investigation updates" subsection capturing the follow-up findings Vercel released after initial disclosure: Lumma Stealer patient zero (Context.ai employee, Feb 2026 Roblox auto-farm script), npm packages confirmed NOT compromised, pre-existing customer compromises found independently of the Context.ai chain (validates "assume prior compromise" posture), Enterprise Bedrock deployments unaffected, ShinyHunters denial, and early downstream key abuse signal (OpenAI leaked-key notification to a customer nine days before disclosure). Explicit framing added that industry consensus treats this as an OAuth supply-chain incident with AI-acceleration as footnote, not a Mythos-era pivot.
+- **docs/07-sources-and-references.md** — New "Vercel Breach Follow-Ups (Added April 22, 2026)" category with 13 new sources including the CSA Research Note, GitGuardian incident playbook, SpecterOps identity-attack-path analysis, SANS follow-up blog, Context.ai security update, Trend Micro / Obsidian Security / VentureBeat analyst coverage, and the CyberAgents VulnOps Playbook. Plus new "Known Exploited Vulnerabilities — April 19-22 Window" table (CVE-2026-33825 "BlueHammer" Defender EoP, CVE-2026-20133 Cisco, others). Total sources now 80+.
+
+### Context
+Research pass covered April 19-22, 2026. Four parallel research threads: Anthropic/Glasswing/Vercel follow-ups, new CVEs/KEV/regulatory, expert commentary post-Vercel, post-SANS-webcast framework updates. Explicit "nothing new" findings where applicable:
+
+- **No new Glasswing partners** announced publicly
+- **No Anthropic policy changes** beyond the April 16 Opus 4.7 + Cyber Verification Program launch
+- **No Stamos revision** to the October 2026 open-weight parity estimate
+- **No open-weight model release** claiming Mythos-class autonomous vulnerability discovery (OpenMythos released Apr 19 is a 770M architecture reconstruction, not a capability-parity claim)
+- **No second SaaS victim** publicly disclosed with a parallel OAuth compromise
+- **No U.S. government statement** specific to Vercel (CISA, SEC, Treasury, White House all silent — Vercel is privately held, reducing 8-K obligation)
+- **No cyber insurance exclusion** triggered by Vercel (Fitch's April 16 warning remains prospective)
+- **No Big 4 / AICPA / IAASB** position paper tied to Vercel
+- **No Schneier, Stamos, AISLE, Hunt, Krebs, Goodin, Zetter, Stratechery, Lawfare** post specifically on Vercel in the April 19-22 window
+
+The emerging consensus: **Vercel is a proof-point for defensive advice that already existed, not a reason to change strategy**. The defensive actions (OAuth scope audit, `sensitive` flag on env vars, secret manager migration, secret rotation, treat AI SaaS as high-risk third-party) were all in the repo before April 19. This release refines their presentation rather than reversing them.
+
 ## [1.6.0] - 2026-04-19 (Vercel/Context.ai supply-chain breach case-study release)
 
 ### Added

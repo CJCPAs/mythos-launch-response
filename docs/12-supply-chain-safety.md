@@ -28,9 +28,22 @@ A Claude Code source-map leak was repurposed as a lure for malware distribution.
 
 **Vercel response:** engaged Mandiant and additional cybersecurity firms, notified law enforcement, engaged Context.ai to assess upstream scope. Characterized the attacker as "highly sophisticated based on their operational velocity and detailed understanding of Vercel's systems."
 
-**Attribution to Mythos:** NONE. This is a conventional supply-chain OAuth attack, not a Mythos-enabled compromise. But it is the clearest real-world example of the attack class this document exists to prevent.
+**Attribution to Mythos:** NONE. This is a conventional supply-chain OAuth attack, not a Mythos-enabled compromise. But it is the clearest real-world example of the attack class this document exists to prevent. The emerging industry consensus (Schneier, SpecterOps, CSA, Trend Micro) is framing this as an **OAuth supply-chain incident with AI-acceleration as a footnote** — not a Mythos-era pivot. The defensive actions below are validated by Vercel, not invented by it.
 
 **Primary source:** https://vercel.com/kb/bulletin/vercel-april-2026-security-incident
+
+### April 20-22 investigation updates *(added in v1.7.0)*
+
+Vercel issued several clarifications after initial disclosure that matter for defenders:
+
+- **Patient zero identified as Lumma Stealer infection** of a Context.ai employee in February 2026, via a Roblox auto-farm script the employee downloaded on a personal device. This extends the pre-disclosure compromise window to ~2 months (source: [Context.ai security update](https://context.ai/security-update), [CyberScoop](https://cyberscoop.com/vercel-security-breach-third-party-attack-context-ai-lumma-stealer/)).
+- **npm packages confirmed NOT compromised** (Apr 20 Vercel bulletin update). This kills one rumor vector that circulated immediately after disclosure.
+- **Pre-existing compromises found independently** of the Context.ai chain. Vercel's April 22 update disclosed that during investigation they found "a small number of customer accounts with evidence of prior compromise" attributed to **social engineering and malware**, separate from and predating this incident. Validates the "assume prior compromise, audit historical OAuth grants" posture.
+- **Enterprise Bedrock deployments of Context.ai were unaffected** — only consumer OAuth tokens were at risk. If your AI tooling runs in your own cloud tenant rather than through a shared SaaS OAuth flow, your blast radius is smaller.
+- **ShinyHunters denied involvement** despite the $2M BreachForums listing using that persona ([BleepingComputer](https://www.bleepingcomputer.com/news/security/vercel-confirms-breach-as-hackers-claim-to-be-selling-stolen-data/)). Attribution is unresolved as of this writing.
+- **Early downstream key abuse:** one Vercel customer received an OpenAI leaked-key notification on April 10 — nine days before disclosure — for a key that existed only in Vercel. Evidence that at least one credential was being abused before anyone knew the breach had happened.
+- **CSA Research Note (April 20)** — [AI SaaS as Enterprise Attack Vector: The Vercel–Context.ai Breach](https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-saas-supply-chain-vercel-contextai-2026/). Frames the incident as a "template threat, not an anomaly." Extends the April 13 SANS/CSA/[un]prompted/OWASP GenAI briefing rather than reversing it.
+- **GitGuardian published a post-incident playbook** (["Non-Sensitive Environment Variables Need Investigation Too"](https://blog.gitguardian.com/vercel-april-2026-incident-non-sensitive-environment-variables-need-investigation-too/)) with concrete commands: `vercel env pull` → `ggshield secret scan path` → rotate anything that wasn't flagged `sensitive` → re-add as `sensitive`. This is the operational response for any Vercel customer.
 
 ### Why This Matters
 
